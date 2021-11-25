@@ -2,6 +2,7 @@ pipeline {
     agent any
     stages {
         stage('Puck Blog 範例') {
+            failFast true
             parallel {
                 stage('Stage 1') {
                     steps {
@@ -14,6 +15,7 @@ pipeline {
                         stage('Stage 2-1') {
                             steps {
                                 echo "In Stage 2-1"
+                                sh 'exit 1' // 模擬發生了錯誤
                                 sleep(5)
                             }
                         }
