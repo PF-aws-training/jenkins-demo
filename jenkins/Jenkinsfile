@@ -27,9 +27,8 @@ pipeline {
             }
         }
         stage('Build Docker Image') {
-            def testImage = docker.build("react-test:test-v1", "./jenkins/Dockerfile")
-            testImage.inside {
-                sh 'make test'
+            steps {
+                sh 'docker build -t react-test:v1 -f ./jenkins/Dockerfile --no-cache . '
             }
         }
     }
