@@ -29,8 +29,8 @@ pipeline {
         stage('Production') {
             steps {
                 withAWS(region:'ap-northeast-1',credentials:'production-s3') {
-                    s3Delete(bucket: 'pf-new-hire', path:'build/*')
-                    s3Upload(bucket: 'pf-new-hire', path:'build', workingDir:'build', includePathPattern:'**/*')
+                    s3Delete(bucket: 'live-resource', path:'public/build/*')
+                    s3Upload(bucket: 'live-resource', path:'public/build', workingDir:'build', includePathPattern:'**/*')
                 }
             }
         }
