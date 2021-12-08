@@ -30,7 +30,7 @@ pipeline {
             agent  any
             steps {
                 sh 'pwd'
-                sh 'echo ${env.WORKSPACE}'
+                //sh 'echo ${env.WORKSPACE}'
                 sh 'printenv'
                 //sh 'docker build -t react-test:v1 -f ./jenkins/Dockerfile --no-cache .'
             }
