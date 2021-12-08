@@ -27,10 +27,10 @@ pipeline {
             }
         }
         stage('Build Docker Image') {
+            agent  any
             steps {
-                script {
-                    docker build -t react-test:v1 -f ./jenkins/Dockerfile --no-cache .
-                }
+                sh 'pwd'
+                //sh 'docker build -t react-test:v1 -f ./jenkins/Dockerfile --no-cache .'
             }
         }
     }
