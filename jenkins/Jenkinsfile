@@ -26,13 +26,12 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-        stage('Build Docker Image') {
-            agent  any
+        stage('Production') {
             steps {
-                sh 'pwd'
-                //sh 'echo ${env.WORKSPACE}'
-                sh 'printenv'
-                //sh 'docker build -t react-test:v1 -f ./jenkins/Dockerfile --no-cache .'
+                withAWS(region:'ap-northeast-1',credentials:'production-s3') {
+                    s3Delete(bucket: 'pf-new-hire', path:'build/*')
+                    s3Upload(bucket: 'pf-new-hire', workingDir:'build', includePathPattern:'build/*')
+                }
             }
         }
     }
