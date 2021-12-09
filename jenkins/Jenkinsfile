@@ -33,7 +33,8 @@ pipeline {
             steps {
                 sh 'printenv'
                 echo "${APP_CODE_PATH}"
-                //sh 'docker build -t react-test:v1 -f ./jenkins/Dockerfile --no-cache .'
+                sh 'cp ${APP_CODE_PATH}/* ./ -rf'
+                //sh "docker build -t react-test:v1 -f ./jenkins/Dockerfile --no-cache ."
             }
         }
     }
