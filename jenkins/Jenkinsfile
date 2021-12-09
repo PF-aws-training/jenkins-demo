@@ -29,7 +29,7 @@ pipeline {
         stage('Docker Image') {
             steps {
                 sh 'printenv'
-                echo ${CI}
+                echo "${CI}"
                 //sh 'docker build -t react-test:v1 -f ./jenkins/Dockerfile --no-cache .'
             }
         }
