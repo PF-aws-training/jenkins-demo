@@ -31,6 +31,7 @@ pipeline {
         stage('Docker Image') {
             agent any
             steps {
+                sh 'pwd'
                 sh 'printenv'
                 echo "${APP_CODE_PATH}"
                 sh 'cp ${APP_CODE_PATH}/build ./ -rf'
