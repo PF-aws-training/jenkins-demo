@@ -7,7 +7,7 @@ pipeline {
     }
     environment {
         CI = 'true'
-        BUILD_PATH = "${WORKSPACE}"
+        BUILD_PATH = "${WORKSPACE}/build"
     }
     stages {
         stage('Build') {
@@ -33,9 +33,6 @@ pipeline {
             steps {
                 sh 'printenv'
                 echo "${BUILD_PATH}"
-                dir("${BUILD_PATH}") {
-                    sh "pwd"
-                }
                 //sh 'docker build -t react-test:v1 -f ./jenkins/Dockerfile --no-cache .'
             }
         }
