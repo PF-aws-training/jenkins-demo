@@ -26,12 +26,11 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-        stage('Production') {
+        stage('Docker Image') {
             steps {
-                withAWS(region:'ap-northeast-1',credentials:'production-s3') {
-                    s3Delete(bucket: 'live-resource', path:'public/build/*')
-                    s3Upload(bucket: 'live-resource', path:'public/build', workingDir:'build', includePathPattern:'**/*', cacheControl:'public,max-age=0')
-                }
+                sh 'printenv'
+                echo ${CI}
+                //sh 'docker build -t react-test:v1 -f ./jenkins/Dockerfile --no-cache .'
             }
         }
     }
