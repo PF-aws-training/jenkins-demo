@@ -37,7 +37,7 @@ pipeline {
                 sh 'cp ${APP_CODE_PATH}/build ./ -rf'
                 sh 'cp ${APP_CODE_PATH}/jenkins ./ -rf'
                 //sh "docker build -t react-test:v1 -f ./jenkins/Dockerfile --no-cache ."
-                sh "docker -v"
+                sh "/usr/bin/docker -v"
             }
         }
     }
