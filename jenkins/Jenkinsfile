@@ -9,24 +9,24 @@ pipeline {
         CI = 'true'
     }
     stages {
-        stage('Build') {
+        stage('Build 1') {
             steps {
                 sh 'npm install'
             }
         }
-        stage('Test') {
+        stage('Test 1') {
             steps {
                 sh './jenkins/scripts/test.sh'
             }
         }
-        stage('Deliver') {
+        stage('Deliver 1') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/kill.sh'
             }
         }
-        stage('Production') {
+        stage('Production 1') {
             steps {
                 input message: 'Upload the web site to S3? (Click "Release" to upload)', ok: "Release"
                 withAWS(region:'ap-northeast-1',credentials:'production-s3') {
